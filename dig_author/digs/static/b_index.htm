@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ckplayer6.7</title>
+<style type="text/css">
+body,td,th {
+	font-size: 14px;
+	line-height: 26px;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+p {
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-left: 10px;
+}
+#a1{
+	position:relative;
+	z-index: 100;
+	width:600px;
+	height:400px;
+	float: left;
+}
+#a2{
+	position:relative;
+	z-index: 100;
+	width:600px;
+	height:400px;
+	float: left;
+}
+</style>
+<script type="text/javascript" src="js/offlights.js"></script>
+</head>
+
+<body>
+<div id="a1"></div><div id="a2"></div>
+<!--
+上面一行是播放器所在的容器名称，如果只调用flash播放器，可以只用<div id="a1"></div>
+-->
+<!--<textarea name="statusvalue" rows="15" id="statusvalue" style="width:200px;height:400px;">该处是用来监听播放器实时返回的各种状态，可以根据这里的状态实时的控制播放器</textarea>-->
+<script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+	var flashvars = {  
+		f: 'ckplayer/m3u8.swf',         //使用swf向播放器发送视频地址进行播放  
+		a: 'http://vod.yy.com/vod_hls/15012x01_314827531_1416665458.m3u8',
+		c: 0,       //调用 ckplayer.js 配置播放器  
+		p: 1,       //自动播放视频  
+		s: 4,       //flash插件形式发送视频流地址给播放器进行播放  
+		lv: 0,      //注意，如果是直播，需设置lv:1   
+	} ; 
+	var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};
+	var video=['http://vod.yy.com/vod_hls/15012x01_314827531_1416665458.m3u8->video/m3u8'];
+	CKobject.embed('ckplayer/ckplayer.swf','a1','ckplayer_a1','100%','100%',false,flashvars,video,params);
+</script>
+<script type="text/javascript">
+	var flashvars = {  
+		f: 'ckplayer/m3u8.swf',         //使用swf向播放器发送视频地址进行播放  
+		a: 'http://vod.yy.com/vod_hls/15012x01_314827531_1416665458.m3u8',
+		c: 0,       //调用 ckplayer.js 配置播放器  
+		p: 1,       //自动播放视频  
+		s: 4,       //flash插件形式发送视频流地址给播放器进行播放  
+		lv: 0,      //注意，如果是直播，需设置lv:1    
+	} ; 
+	var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};
+	var video=['http://vod.yy.com/vod_hls/15012x01_314827531_1416665458.m3u8->video/m3u8'];
+	CKobject.embed('ckplayer/ckplayer.swf','a2','ckplayer_a2','100%','100%',false,flashvars,video,params);
+</script>
+</body>
+</html>

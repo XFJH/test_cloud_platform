@@ -1,0 +1,46 @@
+<!--ajax 请求与处理-->
+{% block res-cnt %}
+    <div id="myDiv">
+        <h2>Let Ajax change this text</h2>
+    </div>
+    <button type="button" onclick="loadXMLDoc()">Change Content</button>
+    <script>
+        function loadXMLDoc(){
+            var url="http://freegeoip.net/json/";
+  
+            
+            function createCORSXhr(url,method){
+                 var xhr=new XMLHttpRequest();
+                 if("withCredentials" in xhr){
+                     xhr.open(method,url,true);
+                 }
+                 else if(typeof XDomainRequest !=="undefined"){
+                     xhr=new XDomainRequest();
+                     xhr.open(method,url);    
+                 }
+                 else
+                     xhr=null;
+                 return xhr;                        
+             };
+       
+           
+            function sendAjaxRequest(){
+                var xhr=createCORSXhr(url,"get");
+                xhr.onload=function(){
+                    if(xhr.readyState==4){
+                        if(xhr.status>=200 && xhr.status<300 || xhr.status==304){
+                            document.getElementById("myDiv").innerHTML=xhr.responseText
+                        <!--alert(xhr.responseText);-->
+                        }
+                        else{
+                            alert(" ajax error...");
+                        }
+                    }
+                };
+                xhr.onerror=function(){ alert("error code:"+xhr.status)}
+                xhr.send(null); 
+            };
+            sendAjaxRequest()
+        };
+    </script>
+<!--{% endblock %} --->

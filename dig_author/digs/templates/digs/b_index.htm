@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>主播云视频</title>
+<style type="text/css">
+body,td,th {
+	font-size: 14px;
+	line-height: 26px;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+p {
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-left: 10px;
+}
+div.video{
+	position:relative;
+	z-index: 100;
+	width:600px;
+	height:400px;
+	margin-left: 200px;
+	margin-top: 10px;
+	border-bottom: 5px solid;
+	<!--float: left;-->
+}
+img.snapshot{
+	float: right;
+	max-width: 600px;
+	max-height: 400px;
+}
+</style>
+<script type="text/javascript" src="{{ STATIC_URL }}js/offlights.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}ckplayer/ckplayer.js" charset="utf-8"></script>
+</head>
+
+<body>
+<div id='videolist'>
+	<p>单击下面的时间（类似2014-12-30T20:29:16）来播放视频</p>
+	<p>限于技术的原因，目前本网站的视频都只支持在电脑上看。希望有大神指路</p>
+	{% include pid_template %}
+	<!--<div id='15012x01_314827531_1416665458' ondblclick='javascript:playById(this.id)'>15012x01_314827531_1416665458</div>-->
+	<!--<div id='15012x01_606401190_1427352182' ondblclick='javascript:playById(this.id)'>15012x01_606401190_1427352182</div>-->
+	<!--<div id='15012x01_515260530_1427347003' ondblclick='javascript:playById(this.id)'>15012x01_515260530_1427347003</div>-->
+	<!--<div id='15012x01_515260530_1427265346' ondblclick='javascript:playById(this.id)'>15012x01_515260530_1427265346</div>-->
+	<!--<div id='15012x01_202932819_1427198873' ondblclick='javascript:playById(this.id)'>15012x01_202932819_1427198873</div>-->
+	<script>
+		function playById(id){
+			document.getElementById(id).setAttribute('class', 'video')
+			var flashvars = {
+				f: '{{ STATIC_URL }}ckplayer/m3u8.swf',
+				a: 'http://vod.yy.com/vod_hls/' + id + '.m3u8',
+				c: 0,
+				// i: 初始化图片， 后期应该根据主播变化
+				i: 'http://static.m.yy.com/group16/M00/1E/2C/tz0M9VO1aosAAAAAAAC08zzShDU842.jpg',
+				p: 0,
+				s: 4,
+				v: 60, // 默认音量
+				lv: 0,
+			};
+			var params={bgcolor:'#FFF', allowFullScreen:true, allowScriptAccess:'always'};
+			var video=['http://vod.yy.com/vod_hls/' + id +'.m3u8->video/m3u8'];
+			CKobject.embed('{{ STATIC_URL }}ckplayer/ckplayer.swf', id, 
+						   'ckplayer_'+'id', '100%', '100%', false, flashvars,
+						   video, params);
+		}
+	</script>
+</div>
+
+<div class='footer'>
+感谢主播，感谢YY.com
+</div>
+</body>
+</html>

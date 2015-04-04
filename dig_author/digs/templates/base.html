@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}My Amazing site{% endblock %}</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="Keyword" content="{{ keyword }}" >
+    <meta name="Description" content="{{ description }}" >
+    {% block css %}{% endblock %}
+    {% block head_script %}{% endblock %}
+</head>
+<body>
+    <div id='search-box'>{% block search-box %}{% endblock %}</div>
+    <div id='res-cnt'>{% block res-cnt %}{% endblock %}</div>
+    <div id='extend'>{% block extend %}{% endblock %}</div>
+</body>
+</html>
