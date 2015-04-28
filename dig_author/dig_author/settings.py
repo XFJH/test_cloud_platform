@@ -17,7 +17,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = '$a9%)yu7a599ez7ot+s9dssk)(+5s^s#sw(oiqg_fi3wk!j0s7'
+=======
+SECRET_KEY = ''
+>>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'digs',
     'show_author',
+<<<<<<< HEAD
     # start zinnia
     'django.contrib.sites',
     'django_comments',
@@ -45,6 +50,8 @@ INSTALLED_APPS = (
     'tagging',
     'zinnia',
     # end zinnia
+=======
+>>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,6 +103,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Customizing project's templates
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+<<<<<<< HEAD
 SITE_ID = 1
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -110,3 +118,5 @@ EMAIL_HOST_PASSWORD = "password"
 EMAIL_HOST_USER = "1258080923@qq.com"
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+=======
+>>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
