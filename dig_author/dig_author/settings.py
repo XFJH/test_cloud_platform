@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -17,11 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
+
 SECRET_KEY = '$a9%)yu7a599ez7ot+s9dssk)(+5s^s#sw(oiqg_fi3wk!j0s7'
-=======
-SECRET_KEY = ''
->>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,16 +41,27 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'digs',
     'show_author',
-<<<<<<< HEAD
-    # start zinnia
-    'django.contrib.sites',
+    'django.contrib.sites', # start zinnia
     'django_comments',
     'mptt',
     'tagging',
-    'zinnia',
-    # end zinnia
-=======
->>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
+    'zinnia',    # end zinnia
+    'cms', # django CMS itself
+    'treebeard', # utilities for implementing a tree
+    'menus', # helper for model independent hierarchical website navigation
+    # 'south', # Only needed for Django < 1.7
+    'sekizai', # for javascript and css management
+    'djangocms_admin_style',
+    'djangocms_file', # options install
+    'djangocms_flash',
+    'djangocms_googlemap',
+    'djangocms_inherit',
+    'djangocms_picture',
+    'djangocms_teaser',
+    'djangocms_video',
+    'djangocms_link',
+    'djangocms_snippet',
+    'djangocms_text_ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -62,6 +72,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 ROOT_URLCONF = 'dig_author.urls'
@@ -95,22 +113,30 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
 STATIC_URL = '/STATIC/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Customizing project's templates
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-
-<<<<<<< HEAD
+TEMPLATE_DIRS = (
+    # The docs say it should be absolute path: BASE_DIR is precisely one
+    os.path.join(BASE_DIR, 'templates'),
+)
 SITE_ID = 1
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-  'django.contrib.auth.context_processors.auth',
-  'django.core.context_processors.i18n',
-  'django.core.context_processors.request',
-  'zinnia.context_processors.version',  # Optional
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'zinnia.context_processors.version',  # Optional
+    # 'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    # 'django.core.context_processors.i18n',
+    # 'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'sekizai.context_processors.sekizai',
+    'cms.context_processors.cms_settings',
 )
 
 EMAIL_HOST = "smtp.qq.com"
@@ -118,5 +144,31 @@ EMAIL_HOST_PASSWORD = "password"
 EMAIL_HOST_USER = "1258080923@qq.com"
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-=======
->>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
+
+# For uploaded files, you will need to set up the MEDIA_ROOT setting:
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
+# Add at least one template to CMS_TEMPLATES;
+CMS_TEMPLATES = (
+    ('template_1.html', 'Template One'),
+    ('template_2.html', 'Template Two'),
+)
+
+LANGUAGES = [
+    ('en-us', 'English'),
+]
+
+MIGRATION_MODULES = {
+    # Add also the following modules if you're using these plugins:
+    'djangocms_file': 'djangocms_file.migrations_django',
+    'djangocms_flash': 'djangocms_flash.migrations_django',
+    'djangocms_googlemap': 'djangocms_googlemap.migrations_django',
+    'djangocms_inherit': 'djangocms_inherit.migrations_django',
+    'djangocms_link': 'djangocms_link.migrations_django',
+    'djangocms_picture': 'djangocms_picture.migrations_django',
+    'djangocms_snippet': 'djangocms_snippet.migrations_django',
+    'djangocms_teaser': 'djangocms_teaser.migrations_django',
+    'djangocms_video': 'djangocms_video.migrations_django',
+    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations_django',
+}

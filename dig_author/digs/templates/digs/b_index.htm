@@ -1,72 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-=======
->>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>主播云视频</title>
-<style type="text/css">
-body,td,th {
-	font-size: 14px;
-	line-height: 26px;
-}
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-p {
-	margin-top: 5px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	padding-left: 10px;
-}
-div.video{
-	position:relative;
-	z-index: 100;
-	width:600px;
-	height:400px;
-	margin-left: 200px;
-	margin-top: 10px;
-	border-bottom: 5px solid;
-	<!--float: left;-->
-}
-img.snapshot{
-	float: right;
-	max-width: 600px;
-	max-height: 400px;
-}
-</style>
-<script type="text/javascript" src="{{ STATIC_URL }}js/offlights.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}ckplayer/ckplayer.js" charset="utf-8"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>主播云视频</title>
+    <style type="text/css">
+        body,td,th {
+        font-size: 14px;
+        line-height: 26px;
+        }
+        body {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        }
+        p {
+        margin-top: 5px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        padding-left: 10px;
+        }
+        div.video{
+        position:relative;
+        z-index: 100;
+        width:600px;
+        height:400px;
+        margin-left: 200px;
+        margin-top: 10px;
+        border-bottom: 5px solid;
+        <!--float: left;-->
+        }
+        img.snapshot{
+        float: right;
+        max-width: 600px;
+        max-height: 400px;
+        }
+    </style>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/offlights.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}ckplayer/ckplayer.js" charset="utf-8"></script>
 </head>
-<<<<<<< HEAD
 <body>
 <div id='videolist'>
-	<p style="color: blue">因为这些视频都是YY网站的，所以做不了缓存处理，请各位看官看完以后自己及时清理缓存。缓存太多以后再次进入本站就会卡起。</p>
-	<p>限于技术的原因，目前本网站的视频都只支持在电脑上看。希望有大神指路</p>
-	<p>单击下面的时间（类似2014-12-30T20:29:16）来播放视频</p>
-	{% include pid_template %}
-=======
-
-<body>
-<div id='videolist'>
-	<p>单击下面的时间（类似2014-12-30T20:29:16）来播放视频</p>
-	<p>限于技术的原因，目前本网站的视频都只支持在电脑上看。希望有大神指路</p>
-	{% include pid_template %}
-	<!--<div id='15012x01_314827531_1416665458' ondblclick='javascript:playById(this.id)'>15012x01_314827531_1416665458</div>-->
-	<!--<div id='15012x01_606401190_1427352182' ondblclick='javascript:playById(this.id)'>15012x01_606401190_1427352182</div>-->
-	<!--<div id='15012x01_515260530_1427347003' ondblclick='javascript:playById(this.id)'>15012x01_515260530_1427347003</div>-->
-	<!--<div id='15012x01_515260530_1427265346' ondblclick='javascript:playById(this.id)'>15012x01_515260530_1427265346</div>-->
-	<!--<div id='15012x01_202932819_1427198873' ondblclick='javascript:playById(this.id)'>15012x01_202932819_1427198873</div>-->
->>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
-	<script>
+    <p>单击下面的时间（类似2014-12-30T20:29:16）来播放视频</p>
+    <p>限于技术的原因，目前本网站的视频都只支持在电脑上看。希望有大神指路</p>
+    {% include pid_template %}
+    <!--<div id='15012x01_314827531_1416665458' ondblclick='javascript:playById(this.id)'>15012x01_314827531_1416665458</div>-->
+    <!--<div id='15012x01_606401190_1427352182' ondblclick='javascript:playById(this.id)'>15012x01_606401190_1427352182</div>-->
+    <!--<div id='15012x01_515260530_1427347003' ondblclick='javascript:playById(this.id)'>15012x01_515260530_1427347003</div>-->
+    <!--<div id='15012x01_515260530_1427265346' ondblclick='javascript:playById(this.id)'>15012x01_515260530_1427265346</div>-->
+    <!--<div id='15012x01_202932819_1427198873' ondblclick='javascript:playById(this.id)'>15012x01_202932819_1427198873</div>-->
+    <script>
 		function playById(id){
 			document.getElementById(id).setAttribute('class', 'video')
 			var flashvars = {
@@ -90,13 +77,10 @@ img.snapshot{
 </div>
 
 <div class='footer'>
-<<<<<<< HEAD
-	<span>感谢主播</span>
-	<a href="http://www.duowan.com"><span>感谢YY</span></a>
-	<a href="https://github.com/XFJH/show_dig_yy_vod"><span>如果你对这个网站感兴趣，欢迎fork</span></a>
-=======
-感谢主播，感谢YY.com
->>>>>>> 1c819ed0293209c8bca3b460e2fabd5998c49b02
+    <span>感谢主播</span>
+    <a href="http://www.duowan.com"><span>感谢YY</span></a>
+    <a href="https://github.com/XFJH/show_dig_yy_vod"><span>如果你对这个网站感兴趣，欢迎fork</span></a>
 </div>
 </body>
+
 </html>
