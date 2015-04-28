@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<title>你在我心中是最美</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="Keyword" content="YY 主播 历史视频 挖掘">
+<meta name="Description" content="根据YY号查找主播的历史视频（感谢YY，感谢录制这个视频的人）">
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+    <div id='search-box'>
+        <form action="#">
+            <label for="anchor_yyNo">主播YY号：</label>
+            <input id="anchor_yyNo" type="text" name="anchor_yyNo" value="10996888">
+            <input type="submit" value="搜索">
+        </form>
+    </div>
+    <div id="myDiv">
+        <h2>Let Ajax change this text</h2>
+    </div>
+    <button type="button" onclick="loadXMLDoc()">Change Content</button>
+    <script>
+    function loadXMLDoc()
+    {
+        var url="http://freegeoip.net/json/";
+      
+       //创建xhr对象
+       function createCORSXhr(url,method){
+            var xhr=new XMLHttpRequest();
+            if("withCredentials" in xhr){
+                xhr.open(method,url,true);
+            }
+            else if(typeof XDomainRequest !=="undefined"){
+                xhr=new XDomainRequest();
+                xhr.open(method,url);    
+            }
+            else
+                xhr=null;
+            return xhr;                        
+            }
+           
+       //创建ajax请求，支持跨域
+       function sendAjaxRequest(){
+            var xhr=createCORSXhr(url,"get");
+            xhr.onload=function(){
+                if(xhr.readyState==4){
+                    if(xhr.status>=200 && xhr.status<300 || xhr.status==304){
+                         document.getElementById("myDiv").innerHTML=xhr.responseText
+                         <!--alert(xhr.responseText);-->
+                    }
+                    else{
+                         alert(" ajax error...");
+                    }
+                 }
+            };
+            xhr.onerror=function(){
+                 alert("error code:"+xhr.status)
+            }
+            xhr.send(null);
+            };
+    
+       sendAjaxRequest()
+    }
+    </script>
+</body>
+</html>

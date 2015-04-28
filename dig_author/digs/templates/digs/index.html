@@ -1,0 +1,51 @@
+﻿{% extends "base.html" %}
+{% block title %}你在我心中是最美{% endblock %}
+{% block css %}
+    <style type='text/css'>
+    span.yyNo{
+        display: inline-block;
+        width: 80px;
+    }
+    #authors{
+        width: 800px;
+    }
+    </style>
+{% endblock %}
+{% block search-box %}
+    {% if get_error %}
+        <p style="color:red">请检查你的输入，服务器根据你的输入未找到相应的数据。还有可能是我们还没有找到你所找的主播的视频</p>
+    {% endif %}
+    <form id="search_by_yyNo" action="/" method="POST">
+        {% csrf_token %}
+        <label for="anchor_yyNo">YY号：</label>
+        <input id="anchor_yyNo" type="number" name="anchor_yyNo" value="118819">
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}
+
+{% block extend %}
+    <div id="authors">
+    <p>下面就是我们找到所有YY号，你可以先看你下里面是否有您找的主播的yy号，再决定是否查找;
+    当然，如果你启用了javascript后可以直接在字段上双击就会进入该字段代表的主播的视频列表页。请慎用双击！</p>
+        {% include author_list %}
+    <script>
+    <!--这段代码实现的功能是双击指定yy号，自动将其填入到上面的search-box-->
+        function to_input(yyNo) {
+            var input_box = document.getElementById('anchor_yyNo')
+            input_box.value = yyNo
+        }
+        function bounding(){
+            var form = document.getElementById('search_by_yyNo')
+            var list = document.getElementsByClassName('yyNo')
+            var len = list.length
+            for(i=0; i<len; i++){
+                list[i].ondblclick = function() {
+                    to_input(this.textContent)
+                    form.submit()
+                }
+            }
+        }  
+        bounding()
+    </script>
+    </div>
+{% endblock %}
