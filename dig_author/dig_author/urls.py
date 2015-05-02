@@ -27,8 +27,10 @@ urlpatterns += i18n_patterns('',
 handler500 = 'digs.views.page_error'
 
 # Sending email
-send_mail('Subject here', 'Here is the message.', '1258080923@qq.com',
-    ['941078420@qq.com'], fail_silently=False)
+# send_mail('Subject here', 'Here is the message.', '1258080923@qq.com',
+#     ['941078420@qq.com'], fail_silently=False)
+send_mail('Subject here', 'Here is the message.', '941078420@qq.com',
+    ['941078420@qq.com'], fail_silently=True)
 
 handler500 = 'digs.views.page_error'
 
